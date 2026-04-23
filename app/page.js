@@ -1,20 +1,25 @@
-const features = [
+const pillars = [
   {
-    title: 'Refill memory',
-    description: 'Remember staple groceries, repeat order patterns, preferred brands, and budget bands.',
+    title: 'Intent-first planning',
+    description:
+      'Instamind starts from the user outcome, not a catalog browse. It understands whether the user needs a refill, a meal, or a blended plan.',
   },
   {
-    title: 'Meal-aware planning',
-    description: 'Understand whether the user needs a grocery refill, a meal tonight, or both in one flow.',
+    title: 'Memory-backed decisions',
+    description:
+      'Repeat staples, budget bands, accepted substitutions, and meal preferences make every plan feel more personal over time.',
   },
   {
-    title: 'Explainable carts',
-    description: 'Return a plan that clearly explains what to buy, what to order, and why it fits.',
+    title: 'Swiggy-native execution',
+    description:
+      'The product is designed around Swiggy Food and Instamart MCP flows so recommendations can evolve into real, approved actions.',
   },
-  {
-    title: 'Swiggy-native actions',
-    description: 'Designed to plug directly into Swiggy Food and Instamart MCP tools for real execution.',
-  },
+];
+
+const howItWorks = [
+  'Understand the user goal, budget, and household context.',
+  'Decide whether the best path is Swiggy Food, Instamart, or a blended cart.',
+  'Generate a cart-ready plan with reasoning, substitutions, and budget fit.',
 ];
 
 const demoItems = [
@@ -25,226 +30,188 @@ const demoItems = [
   ['Curd', '2 tubs', '₹90'],
 ];
 
-const roadmap = [
-  {
-    phase: 'Phase 1',
-    items: ['Next.js landing and demo flow', 'interactive planner', 'mock preference memory'],
-  },
-  {
-    phase: 'Phase 2',
-    items: ['Swiggy auth callback', 'Food integration', 'Instamart cart creation'],
-  },
-  {
-    phase: 'Phase 3',
-    items: ['mobile app', 'push refill reminders', 'family mode and shared lists'],
-  },
+const useCases = [
+  'Weekly breakfast refill for busy professionals',
+  'Tonight plus tomorrow planning in one decision flow',
+  'Repeat grocery management with lighter manual effort',
 ];
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-white text-slate-900">
-      <header className="sticky top-0 z-20 border-b border-slate-200/80 bg-white/80 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <div className="text-2xl font-semibold tracking-tight">
-            Insta<span className="text-violet-600">mind</span>
-          </div>
-          <nav className="hidden gap-6 text-sm text-slate-600 md:flex">
-            <a href="#product">Product</a>
+    <main className="page-shell">
+      <header className="topbar">
+        <div className="container topbar-inner">
+          <div className="brand-mark">Instamind</div>
+          <nav className="topnav">
+            <a href="#how-it-works">How it works</a>
             <a href="#demo">Demo</a>
-            <a href="#architecture">Architecture</a>
-            <a href="#roadmap">Roadmap</a>
+            <a href="#system">System</a>
           </nav>
-          <a
-            href="https://github.com/princepal9120/instamind"
-            className="rounded-xl border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
-          >
-            GitHub
+          <a href="https://github.com/princepal9120/instamind" className="ghost-button">
+            View GitHub
           </a>
         </div>
       </header>
 
-      <section className="border-b border-slate-200 bg-gradient-to-b from-violet-50 via-white to-white">
-        <div className="mx-auto grid max-w-6xl gap-12 px-6 py-24 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <section className="hero-section">
+        <div className="container hero-grid">
           <div>
-            <div className="inline-flex rounded-full border border-violet-200 bg-violet-100 px-4 py-1.5 text-sm font-medium text-violet-700">
-              Swiggy Builders MVP
-            </div>
-            <h1 className="mt-6 max-w-4xl text-5xl font-semibold tracking-tight text-slate-900 md:text-7xl">
-              Your AI assistant for grocery refills and smarter meal decisions.
-            </h1>
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600 md:text-xl">
-              Instamind turns recurring needs, budget, and food preferences into ready-to-approve plans. Instead of browsing from scratch, users describe the outcome they want and the agent decides what to order from Swiggy Food, what to restock from Instamart, and why.
+            <div className="eyebrow">Swiggy Builders Club submission concept</div>
+            <h1 className="hero-title">AI planning for grocery refills and meal decisions, built for Swiggy-native execution.</h1>
+            <p className="hero-copy">
+              Instamind turns recurring needs, budget, and food preferences into ready-to-approve plans. Instead of making users browse from scratch, it decides what should come from Instamart, what should come from Swiggy Food, and why the final plan fits.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <a href="#demo" className="rounded-2xl bg-violet-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-violet-700">
-                Explore the MVP
+            <div className="hero-actions">
+              <a href="#demo" className="primary-button">
+                Explore the concept
               </a>
-              <a href="#architecture" className="rounded-2xl border border-slate-300 px-5 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50">
+              <a href="#system" className="secondary-button">
                 View system design
               </a>
             </div>
           </div>
 
-          <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
-            <div className="rounded-3xl border border-violet-100 bg-violet-50 p-5">
-              <p className="text-sm font-medium text-violet-700">Sample agent output</p>
-              <div className="mt-4 space-y-3 text-sm leading-6 text-slate-700">
-                <p><strong>Goal:</strong> breakfast refill for 4 days, plus one healthy dinner tonight under ₹450.</p>
-                <p><strong>Plan:</strong> Instamart cart for staples and one Swiggy Food recommendation for immediate dinner.</p>
-                <p><strong>Why:</strong> covers tomorrow morning, matches high-protein preference, and stays within budget.</p>
-              </div>
+          <div className="hero-card">
+            <div className="hero-card-header">Example output</div>
+            <div className="signal-card">
+              <p><strong>Goal</strong></p>
+              <p>Breakfast refill for 4 days, plus one healthy dinner tonight under ₹450.</p>
             </div>
-            <div className="mt-5 grid gap-3 md:grid-cols-2">
-              <div className="rounded-2xl border border-slate-200 p-4 text-sm text-slate-600">Memory layer stores repeat groceries, accepted substitutions, and budget bands.</div>
-              <div className="rounded-2xl border border-slate-200 p-4 text-sm text-slate-600">Planner layer chooses Food, Instamart, or a blended flow based on intent.</div>
+            <div className="signal-card muted">
+              <p><strong>Recommended path</strong></p>
+              <p>Instamart for recurring staples. Swiggy Food for a quick, high-protein dinner.</p>
+            </div>
+            <div className="signal-card muted">
+              <p><strong>Why this works</strong></p>
+              <p>It covers tomorrow morning, matches preference memory, and avoids over-ordering.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="product" className="mx-auto max-w-6xl px-6 py-20">
-        <div className="max-w-3xl">
-          <h2 className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">What the product needs to feel like</h2>
-          <p className="mt-4 text-lg leading-8 text-slate-600">
-            Not a generic shopping UI. Not a chatbot that tells you to browse. Instamind should feel like a personal commerce operator that remembers, decides, and explains.
-          </p>
-        </div>
-        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-          {features.map((feature) => (
-            <div key={feature.title} className="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-slate-900">{feature.title}</h3>
-              <p className="mt-3 text-sm leading-6 text-slate-600">{feature.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="demo" className="border-y border-slate-200 bg-slate-50">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          <div className="max-w-3xl">
-            <h2 className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">MVP demo flow</h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">
-              This is the fastest credible version to ship. It proves the user flow, the reasoning layer, and the Swiggy integration story without pretending everything is already production-connected.
+      <section id="how-it-works" className="section-block">
+        <div className="container section-grid two-col">
+          <div>
+            <div className="section-kicker">How it works</div>
+            <h2 className="section-title">A lighter, cleaner commerce flow</h2>
+            <p className="section-copy">
+              The product is intentionally simple at the surface. Users describe the outcome they want. The planner layer decides the right commerce path and returns a plan that is clear enough to approve.
             </p>
           </div>
+          <div className="stack-list">
+            {howItWorks.map((item, index) => (
+              <div key={item} className="list-card">
+                <div className="list-index">0{index + 1}</div>
+                <p>{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-            <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
-              <div className="rounded-2xl bg-slate-100 p-4 text-sm text-slate-700">
-                Keep me stocked for breakfast for the next 4 days. I also want one healthy dinner tonight under ₹450. I usually buy eggs, milk, bananas, oats, and curd.
+      <section className="section-block muted-surface">
+        <div className="container">
+          <div className="section-head narrow">
+            <div className="section-kicker">Core product pillars</div>
+            <h2 className="section-title">Built to feel less like shopping, more like planning</h2>
+          </div>
+          <div className="card-grid three-up">
+            {pillars.map((pillar) => (
+              <div key={pillar.title} className="feature-card">
+                <h3>{pillar.title}</h3>
+                <p>{pillar.description}</p>
               </div>
-              <div className="mt-4 rounded-2xl border border-violet-200 bg-violet-50 p-4 text-sm leading-6 text-slate-700">
-                <strong>Instamind plan</strong>
-                <p className="mt-2">Breakfast refill cart through Instamart plus one quick high-protein dinner option through Swiggy Food.</p>
-                <p className="mt-2">The blended plan is cheaper than over-ordering dinner twice and keeps tomorrow morning covered.</p>
-              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="demo" className="section-block">
+        <div className="container section-grid demo-grid">
+          <div>
+            <div className="section-kicker">MVP demo</div>
+            <h2 className="section-title">A credible first version for builders review</h2>
+            <p className="section-copy">
+              This MVP is designed to communicate the product clearly without pretending the full Swiggy integration stack is already wired. The value is in the planner logic, the blended decision flow, and the product surface.
+            </p>
+            <div className="note-card">
+              <p className="note-label">Sample input</p>
+              <p>
+                Keep me stocked for breakfast for the next 4 days. I also want one healthy dinner tonight. I usually buy eggs, milk, bananas, oats, and curd.
+              </p>
             </div>
+          </div>
 
-            <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
-              <div className="flex items-center justify-between border-b border-slate-200 pb-4">
-                <div>
-                  <h3 className="text-xl font-semibold text-slate-900">Suggested refill cart</h3>
-                  <p className="text-sm text-slate-500">Instamart estimate</p>
-                </div>
-                <div className="text-lg font-semibold text-slate-900">₹566</div>
+          <div className="demo-card">
+            <div className="demo-header">
+              <div>
+                <h3>Suggested refill cart</h3>
+                <p>Instamart estimate</p>
               </div>
-              <div className="divide-y divide-slate-200">
-                {demoItems.map(([name, qty, price]) => (
-                  <div key={name} className="flex items-center justify-between py-4 text-sm">
-                    <div>
-                      <div className="font-medium text-slate-900">{name}</div>
-                      <div className="text-slate-500">{qty}</div>
-                    </div>
-                    <div className="font-medium text-slate-700">{price}</div>
+              <div className="demo-total">₹566</div>
+            </div>
+            <div className="demo-items">
+              {demoItems.map(([name, qty, price]) => (
+                <div key={name} className="demo-row">
+                  <div>
+                    <div className="row-title">{name}</div>
+                    <div className="row-subtitle">{qty}</div>
                   </div>
-                ))}
-              </div>
-              <div className="mt-5 rounded-2xl border border-slate-200 p-4 text-sm leading-6 text-slate-600">
-                <strong className="text-slate-900">Dinner recommendation:</strong> grilled chicken bowl, ETA 25 min, approx. ₹389. Chosen because it matches budget, protein preference, and convenience.
-              </div>
+                  <div className="row-price">{price}</div>
+                </div>
+              ))}
+            </div>
+            <div className="recommendation-box">
+              <strong>Dinner recommendation</strong>
+              <p>Grilled chicken bowl, ETA 25 min, approx. ₹389. Chosen for budget fit, protein preference, and lower decision overhead.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="architecture" className="mx-auto max-w-6xl px-6 py-20">
-        <div className="max-w-3xl">
-          <h2 className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">System design</h2>
-          <p className="mt-4 text-lg leading-8 text-slate-600">
-            A lightweight architecture for a solo founder to ship fast. Web first, clean integration points, then real Swiggy auth and MCP execution once access is approved.
-          </p>
-        </div>
-
-        <div className="mt-10 overflow-x-auto rounded-[28px] border border-slate-200 bg-slate-950 p-6 shadow-sm">
-          <pre className="min-w-[780px] whitespace-pre-wrap font-mono text-sm leading-6 text-slate-200">{`┌──────────────────────────────┐
-│  Next.js web app             │
-│  - landing page              │
-│  - planner input             │
-│  - recommendation screen     │
-│  - approval UI               │
-└───────────────┬──────────────┘
-                │ HTTPS
-                ▼
-┌──────────────────────────────┐
-│  App API / Orchestrator      │
-│  Node.js + TypeScript        │
-│  - preference handling       │
-│  - planning / routing        │
-│  - result explanation        │
-│  - auth callback             │
-└───────────┬─────────┬────────┘
-            │         │
-            │         ├────────────────────────────┐
-            │         │                            │
-            ▼         ▼                            ▼
-┌────────────────┐ ┌────────────────┐   ┌─────────────────┐
-│ Memory store   │ │ Swiggy Food    │   │ Swiggy          │
-│ pantry habits  │ │ MCP server     │   │ Instamart MCP   │
-│ diets/budget   │ │ meals/offers   │   │ products/carts  │
-└────────────────┘ └────────────────┘   └─────────────────┘
-            │
-            ▼
-┌──────────────────────────────┐
-│ Explainability layer         │
-│ - why this plan              │
-│ - substitutions              │
-│ - budget fit                 │
-└──────────────────────────────┘`}</pre>
-        </div>
-
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
-          <div className="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm">
-            <h3 className="text-lg font-semibold text-slate-900">Auth callback path</h3>
-            <p className="mt-3 text-sm leading-6 text-slate-600">/api/integrations/swiggy/callback</p>
+      <section id="system" className="section-block muted-surface system-section">
+        <div className="container section-grid two-col">
+          <div>
+            <div className="section-kicker">System design</div>
+            <h2 className="section-title">Small surface area, clear integration points</h2>
+            <p className="section-copy">
+              The architecture stays intentionally light. A clean web layer, a planner/orchestrator, a simple memory layer, and Swiggy integration points that can be connected once access is approved.
+            </p>
+            <div className="mini-grid">
+              <div className="mini-card">
+                <h3>Auth callback</h3>
+                <p>/api/integrations/swiggy/callback</p>
+              </div>
+              <div className="mini-card">
+                <h3>Deployment</h3>
+                <p>Next.js, Vercel-ready, builder-friendly setup.</p>
+              </div>
+            </div>
           </div>
-          <div className="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm">
-            <h3 className="text-lg font-semibold text-slate-900">Vercel-ready stack</h3>
-            <p className="mt-3 text-sm leading-6 text-slate-600">Next.js App Router, simple CSS, no extra complexity, clean for immediate deployment.</p>
-          </div>
-          <div className="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm">
-            <h3 className="text-lg font-semibold text-slate-900">MVP promise</h3>
-            <p className="mt-3 text-sm leading-6 text-slate-600">Ship a clean story now, then wire in real Swiggy APIs without rebuilding the product surface.</p>
+          <div className="diagram-card">
+            <pre>{`Web app
+  ↓
+Planner / orchestrator
+  ↓
+Memory + preference layer
+  ↓
+Swiggy Food MCP | Instamart MCP
+  ↓
+Cart-ready recommendation + approval flow`}</pre>
           </div>
         </div>
       </section>
 
-      <section id="roadmap" className="border-t border-slate-200 bg-slate-50">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          <div className="max-w-3xl">
-            <h2 className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">Roadmap</h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">
-              The current repo now communicates the product clearly. From here, the right next move is to add real execution in layers.
-            </p>
+      <section className="section-block">
+        <div className="container section-grid two-col">
+          <div>
+            <div className="section-kicker">Use cases</div>
+            <h2 className="section-title">Where Instamind is strongest first</h2>
           </div>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {roadmap.map((phase) => (
-              <div key={phase.phase} className="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-slate-900">{phase.phase}</h3>
-                <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-600">
-                  {phase.items.map((item) => (
-                    <li key={item}>• {item}</li>
-                  ))}
-                </ul>
+          <div className="stack-list compact">
+            {useCases.map((item) => (
+              <div key={item} className="list-card compact-card">
+                <p>{item}</p>
               </div>
             ))}
           </div>
